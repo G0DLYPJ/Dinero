@@ -3,10 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1> Dinero </h1>
+    <title>Dinero - Expense Tracker</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Link to your new stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+    <!-- Custom Message Box -->
+    <div id="message-box">Expense Added!</div>
+
+    <!-- Header / Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo/Title -->
+            <h1 class="text-3xl font-extrabold text-indigo-600">Dinero</h1>
+            <!-- Navigation Links -->
+            <div>
+                <a id="nav-logger" href="#" class="nav-link text-lg font-medium text-slate-700 hover:text-indigo-600 px-3 py-2 rounded-lg transition" data-page="logger-page">Log Expense</a>
+                <a id="nav-dashboard" href="#" class="nav-link text-lg font-medium text-slate-700 hover:text-indigo-600 px-3 py-2 rounded-lg transition" data-page="dashboard-page">Dashboard</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-6xl mx-auto p-4 md:p-8">
+
+        <!-- Page 1: Expense Logger -->
+        <section id="logger-page" class="page active">
+            <div class="max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                <h2 class="text-3xl font-bold text-center text-slate-900 mb-6">Log a New Expense</h2>
+                <form id="expense-form" class="space-y-6">
+                    <!-- Description -->
+                    <div>
+                        <label for="description" class="block text-sm font-medium text-slate-700 mb-1">Description</label>
+                        <input type="text" id="description" name="description" placeholder="e.g., Coffee with client" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" required>
+                    </div>
+                    <!-- Amount -->
+                    <div>
+                        <label for="amount" class="block text-sm font-medium text-slate-700 mb-1">Amount ($)</label>
+                        <input type="number" id="amount" name="amount" step="0.01" min="0" placeholder="e.g., 15.50" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" required>
+                    </div>
+                    <!-- Category -->
+                    <div>
+                        <label for="category" class="block text-sm font-medium text-slate-700 mb-1">Category</label>
+                        <select id="category" name="category" class="w-full p-3 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-indigo-500 focus:outline-none transition">
+                            <option value="food">Food & Drink</option>
+                            <option value="transport">Transport</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <!-- Date -->
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-slate-700 mb-1">Date</label>
+                        <input type="date" id="date" name="date" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition" required>
+                    </div>
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-indigo-600 text-white p-3 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-indigo-500/50 transform hover:-translate-y-0.5">
+                        Add Expense
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Page 2: Dashboard -->
+        <section id="dashboard-page" class="page">
+            <h2 class="text-3xl font-bold text-slate-900 mb-6">Your Dashboard</h2>
+            
+            <!-- Total Expenditure -->
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8 rounded-xl shadow-2xl mb-8">
+                <h3 class="text-xl font-medium text-indigo-100">Total Expenditure</h3>
+                <p id="total-expenditure" class="text-5xl font-extrabold mt-2">$0.00</p>
+            </div>
+
+            <!-- Expense List -->
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold text-slate-900 mb-4">Expense Log</h3>
+                <div id="expense-list" class="space-y-4">
+                    <!-- Expenses will be injected here by JS -->
+                    <p id="empty-state" class="text-slate-500 text-center py-4">You have no expenses logged yet.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Link to your new script file -->
+    <!-- 'defer' ensures the script runs after the HTML is parsed -->
+    <script src="Script.js" defer></script>
 </body>
 </html>

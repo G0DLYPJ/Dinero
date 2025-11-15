@@ -1,0 +1,34 @@
+/* Use Inter as the default font */
+body {
+    font-family: 'Inter', sans-serif;
+}
+/* Simple animation for page transitions */
+.page {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+.page.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Custom message box */
+#message-box {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 2rem;
+    background-color: #22c55e; /* green-500 */
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: top 0.5s ease-in-out;
+    z-index: 50;
+}
+#message-box.show {
+    top: 20px;
+}
